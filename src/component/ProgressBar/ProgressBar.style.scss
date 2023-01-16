@@ -1,0 +1,52 @@
+#progress-container {
+  background-color: $default-secondary-light-color;
+  position: relative;
+  padding: 25px 0;
+}
+
+#progress-bar {
+  display: flex;
+  width: 100%;
+}
+
+.step-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+.step.active {
+  color: white;
+}
+
+.line {
+  background: gray;
+  height: 5px;
+  width: 100%;
+  transition: background-color 2s linear;
+}
+
+.step,
+.line {
+  background: linear-gradient(to right, $default-primary-base-color 50%, $default-secondary-dark-color 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease-out;  
+}
+
+.step.active,
+.line.active {
+  background-position: left bottom;
+}

@@ -1,18 +1,34 @@
 import { PureComponent } from 'react';
+import { STEPS } from 'Route/Checkout/Checkout.config';
+import "./ProgressBar.style"
 
 class ProgressBar extends PureComponent {
   render() {
-    const { checkoutStep, steps } = this.props;
+    const { checkoutStep } = this.props;
+    const active = STEPS.indexOf(checkoutStep);
+
     return (
-      <div id="progress">
-        <div id="progress-bar"></div>
-        <ul id="progress-num">
-          {steps.map((el, index) => {
-            if (index !== steps.length - 1) {
-              return <li key={el.stepNumber} className="step">{el.stepNumber}</li>
+      <div id="progress-container">
+        <div id="progress-bar">
+          {STEPS.map((el, index) => {
+            const isActive = active >= index ? 'active' : "";
+            const isCompleted = index < active;
+            if (index !== STEPS.length - 1) {
+              return (
+                <div className='step-container'>
+                  <div className={`line ${isActive}`}></div>
+                  <div className={`step ${isActive}`} key={el}>{isCompleted ? <span>&#10003;</span> : index + 1}</div>
+                </div>
+              )
+            } else {
+              return (
+                <div className='step-container'>
+                  <div className={`line ${isActive}`}></div>
+                </div>
+              )
             }
           })}
-        </ul>
+        </div>
       </div>
     )
   }
