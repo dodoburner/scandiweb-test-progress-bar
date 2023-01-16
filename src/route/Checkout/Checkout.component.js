@@ -5,6 +5,7 @@ import ProgressBar from "Component/ProgressBar/ProgressBar.component";
 import "./Checkout.override.style";
 
 class Checkout extends SourceCheckout {
+  // I'm adding the ProgressBar to the render method and pass the checkoutStep as a prop
   render() {
     return (
       <main block="Checkout">
