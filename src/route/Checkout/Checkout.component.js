@@ -2,13 +2,14 @@ import { PureComponent } from "react";
 import ContentWrapper from 'Component/ContentWrapper';
 import { Checkout as SourceCheckout } from "SourceRoute/Checkout/Checkout.component";
 import ProgressBar from "Component/ProgressBar/ProgressBar.component";
+import { STEPS } from "./Checkout.config";
 
 
 class Checkout extends SourceCheckout {
   render() {
     return (
       <main block="Checkout">
-            <ProgressBar />
+            <ProgressBar checkoutStep={this.props.checkoutStep} steps={STEP} />
             <ContentWrapper
               wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
               label={ __('Checkout page') }
